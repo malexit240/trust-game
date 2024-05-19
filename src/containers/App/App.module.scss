@@ -1,1 +1,29 @@
-.App {}
+@use '../../styles/colors.scss';
+
+.App {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 3rem 1fr 3rem;
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px solid colors.$black;
+}
+
+.footer {
+    margin: auto 0 0 0;
+    text-align: center;
+    border-top: 2px solid colors.$black;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background-color: colors.$light-gray;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 0.15fr 0.85fr;
+}

@@ -1,0 +1,45 @@
+@use '../../styles/colors.scss';
+
+.sidebar {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: colors.$dark-gray;
+    height: calc(100dvh - 8rem);
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    overflow-y: scroll;
+}
+
+
+.history {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    border-collapse: collapse;
+
+    th {
+        padding: 0.5rem 0.5rem;
+    }
+
+    td {
+        border-top: 0.15rem solid white;
+        padding: 0.5rem 0.5rem;
+    }
+
+    td+td {
+        border-left: 0.15rem solid white;
+    }
+
+    .win {
+        color: greenyellow;
+    }
+
+    .loose {
+        color: red;
+    }
+}
