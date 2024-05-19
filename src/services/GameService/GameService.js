@@ -5,7 +5,7 @@ export const DECISION = {
 
 
 export function TurnChoices(player, opponent) {
-    return [player, opponent]
+    return { player, opponent }
 }
 
 export function GetOpponentChoise(history = []) {
@@ -14,7 +14,7 @@ export function GetOpponentChoise(history = []) {
         return DECISION.COOPERATE;
     }
 
-    return history[history.length - 1][0];
+    return history[history.length - 1].player;
 }
 
 export function shouldFinishRound(posibility) {
@@ -24,14 +24,14 @@ export function shouldFinishRound(posibility) {
 export function getPointsByHistory(history) {
     const playerPoints = history.reduce((a, v) => {
         return a
-            - (v[0] == DECISION.COOPERATE ? 2 : 0)
-            + (v[1] == DECISION.COOPERATE ? 5 : 0);
+            - (v.player == DECISION.COOPERATE ? 2 : 0)
+            + (v.opponent == DECISION.COOPERATE ? 5 : 0);
     }, 0);
 
     const opponentPoints = history.reduce((a, v) => {
         return a
-            - (v[1] == DECISION.COOPERATE ? 2 : 0)
-            + (v[0] == DECISION.COOPERATE ? 5 : 0);
+            - (v.opponent == DECISION.COOPERATE ? 2 : 0)
+            + (v.player == DECISION.COOPERATE ? 5 : 0);
     }, 0);
 
     return [playerPoints, opponentPoints]

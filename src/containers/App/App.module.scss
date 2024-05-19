@@ -1,21 +1,22 @@
 @use '../../styles/colors.scss';
+@use '../../styles/sizes.scss';
 
 .App {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 3rem 1fr 3rem;
+    grid-template-rows: auto 1fr auto;
 }
 
 .header {
     text-align: center;
-    border-bottom: 2px solid colors.$black;
+    padding: 0.5rem;
 }
 
 .footer {
     margin: auto 0 0 0;
     text-align: center;
-    border-top: 2px solid colors.$black;
+    padding: 0.5rem;
 }
 
 .main {
@@ -26,4 +27,13 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: 0.15fr 0.85fr;
+}
+
+@media (width <=sizes.$mobile-screen-width) {
+    .main {
+        display: flex;
+        flex-flow: column-reverse;
+        flex: none;
+        justify-content: start;
+    }
 }

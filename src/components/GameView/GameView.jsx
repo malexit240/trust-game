@@ -23,8 +23,8 @@ export function GameView() {
 
                 {moves.map((m, i) => {
                     const playerClassName =
-                        m[0] == DECISION.COOPERATE && styles['cooperate']
-                        || m[0] == DECISION.CHEATE && styles['cheate'];
+                        m.player == DECISION.COOPERATE && styles['cooperate']
+                        || m.player == DECISION.CHEATE && styles['cheate'];
 
                     return <>
                         <p className={`${playerClassName}`}> {i + 1} </p>
@@ -44,8 +44,8 @@ export function GameView() {
                 {moves.map((m, i) => {
 
                     const opponentClassName =
-                        m[1] == DECISION.COOPERATE && styles['cooperate']
-                        || m[1] == DECISION.CHEATE && styles['cheate'];
+                        m.opponent == DECISION.COOPERATE && styles['cooperate']
+                        || m.opponent == DECISION.CHEATE && styles['cheate'];
 
                     return <>
                         <p className={`${opponentClassName}`}> {i + 1} </p>
