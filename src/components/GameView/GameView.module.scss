@@ -75,6 +75,24 @@
     }
 }
 
+.animated {
+    animation: flashing linear 2s infinite;
+}
+
+@keyframes flashing {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
 @media (width <=sizes.$mobile-screen-width) {
     .game {
         padding: 1rem;

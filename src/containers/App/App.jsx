@@ -22,7 +22,7 @@ function App() {
 
       <footer className={styles['footer']}>
 
-        <p>THE GAME OF TRUST</p>
+        <p>Look code on <a href='https://github.com/malexit240/trust-game'>github</a> </p>
 
       </footer>
 

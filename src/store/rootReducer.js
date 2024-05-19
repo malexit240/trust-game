@@ -47,7 +47,7 @@ export const rootReducer = slice.reducer;
 function doMove(state, choise) {
     state.moves.push(new MoveChoices(choise, GetOpponentChoise(state.moves)));
 
-    if (shouldFinishRound(0.1 * state.moves.length)) {
+    if (shouldFinishRound(0.06 * state.moves.length)) {
         state.isGameActive = false;
     }
 }

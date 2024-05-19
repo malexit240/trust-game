@@ -32,7 +32,7 @@ export function GameView() {
                 })}
 
                 {isGameActive && <>
-                    <p>?</p>
+                    <p className={styles['animated']}>?</p>
                 </>}
 
             </div>
@@ -53,7 +53,7 @@ export function GameView() {
                 })}
 
                 {isGameActive && <>
-                    <p>?</p>
+                    <p className={styles['animated']}>?</p>
                 </>}
 
             </div>
