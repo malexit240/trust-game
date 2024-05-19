@@ -1,35 +1,18 @@
-import { useState, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+
 import styles from './GameView.module.scss'
 
-import { DECISION, TurnChoices, shouldFinishRound, GetOpponentChoise, getPointsByHistory, saveResultToHistory, GameContext } from '../../services/GameService/GameService'
+import { DECISION, getPointsByHistory } from '../../services/GameService/GameService'
+import { actions } from '../../store/rootReducer';
 
 export function GameView() {
+    const state = useSelector(s => s.root)
+    const dispatch = useDispatch();
 
-    const [isGameActive, setIsGameActive] = useState(true);
-    const [history, setHistory] = useState([]);
+    const moves = state.moves;
+    const isGameActive = state.isGameActive;
 
-    const [playerPoints, opponentPoints] = getPointsByHistory(history);
-
-    const updateApp = useContext(GameContext)
-
-    function restart() {
-        saveResultToHistory([playerPoints, opponentPoints]);
-
-        setIsGameActive(true);
-        setHistory([]);
-
-        updateApp();
-    }
-
-    function doTurn(choise) {
-        history.push(new TurnChoices(choise, GetOpponentChoise(history)));
-
-        if (shouldFinishRound(0.1 * history.length)) {
-            setIsGameActive(false);
-        }
-
-        setHistory(history.filter(() => true));
-    }
+    const [playerPoints, opponentPoints] = getPointsByHistory(moves);
 
     return <>
         <section className={styles['game']}>
@@ -38,10 +21,10 @@ export function GameView() {
 
             <div className={styles['history']}>
 
-                {history.map((t, i) => {
+                {moves.map((m, i) => {
                     const playerClassName =
-                        t.result.player == DECISION.COOPERATE && styles['cooperate']
-                        || t.result.player == DECISION.CHEATE && styles['cheate'];
+                        m[0] == DECISION.COOPERATE && styles['cooperate']
+                        || m[0] == DECISION.CHEATE && styles['cheate'];
 
                     return <>
                         <p className={`${playerClassName}`}> {i + 1} </p>
@@ -58,11 +41,11 @@ export function GameView() {
 
             <div className={styles['history']}>
 
-                {history.map((t, i) => {
+                {moves.map((m, i) => {
 
                     const opponentClassName =
-                        t.result.opponent == DECISION.COOPERATE && styles['cooperate']
-                        || t.result.opponent == DECISION.CHEATE && styles['cheate'];
+                        m[1] == DECISION.COOPERATE && styles['cooperate']
+                        || m[1] == DECISION.CHEATE && styles['cheate'];
 
                     return <>
                         <p className={`${opponentClassName}`}> {i + 1} </p>
@@ -76,11 +59,11 @@ export function GameView() {
             </div>
 
             <div className={styles['options']}>
-                <button disabled={!isGameActive} onClick={() => doTurn(DECISION.COOPERATE)}>Cooperate</button>
-                <button disabled={!isGameActive} onClick={() => doTurn(DECISION.CHEATE)}>Cheate</button>
-                <button disabled={isGameActive} onClick={restart}>New round</button>
+                <button disabled={!isGameActive} onClick={() => dispatch(actions.cooperate())}>Cooperate</button>
+                <button disabled={!isGameActive} onClick={() => dispatch(actions.cheate())}>Cheate</button>
+                <button disabled={isGameActive} onClick={() => dispatch(actions.newGame())}>New round</button>
             </div>
 
-        </section>
+        </section >
     </>
 }

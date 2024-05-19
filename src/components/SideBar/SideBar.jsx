@@ -1,15 +1,9 @@
-import { useEffect, useState } from 'react'
-import { getResultsHistory } from '../../services/GameService/GameService'
+import { useSelector } from 'react-redux'
 
 import styles from './SideBar.module.scss'
 
 export function SideBar() {
-
-    const [history, setHistory] = useState([]);
-
-    useEffect(() => {
-        setHistory(getResultsHistory());
-    }, []);
+    const history = useSelector(s => s.root.history)
 
     return <aside className={styles['sidebar']}>
 
@@ -30,7 +24,7 @@ export function SideBar() {
 
             <tbody>
 
-                {history.map(r => <tr>
+                {history.map((r, i) => <tr key={i}>
                     <td className={styles['win']}>{r[0]}</td>
                     <td className={styles['loose']}>{r[1]}</td>
                 </tr>)}
