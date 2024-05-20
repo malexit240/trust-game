@@ -28,23 +28,27 @@ function App() {
         </a> </p>
 
 
-        <p id={styles['how-to-play-label']}> How to play?  <Popup className={styles['how-to-play']}>
+        <p id={styles['how-to-play-label']}> How to play?
 
-          <h2>
-            How to play
-          </h2>
+          <Popup className={styles['how-to-play']}>
 
-          <ul>
+            <h2>
+              How to play
+            </h2>
 
-            <li>You loose 2 points when cooperate and get 5 points when other cooperates</li>
+            <ul>
 
-            <li>Your goal is take much more points so you will probably have to cheate.</li>
+              <li>You loose 2 points when cooperate and get 5 points when other cooperates</li>
 
-            <li>Each game has random number of rounds</li>
+              <li>Your goal is take much more points so you will probably have to cheate.</li>
 
-          </ul>
+              <li>Each game has random number of rounds</li>
 
-        </Popup></p>
+            </ul>
+
+          </Popup>
+
+        </p>
 
         <p>Look code on <a href='https://github.com/malexit240/trust-game'>github</a> </p>
 

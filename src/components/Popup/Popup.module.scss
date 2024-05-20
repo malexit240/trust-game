@@ -2,10 +2,12 @@
 
 .popup {
     position: absolute;
+
     bottom: 100%;
     left: 50%;
-    width: 30rem;
     transform: translate(-50%, 0%);
+
+    min-width: 20rem;
 
     visibility: hidden;
     opacity: 0;

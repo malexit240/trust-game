@@ -6,7 +6,7 @@
     height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 .header {
@@ -75,10 +75,8 @@
         flex: none;
         justify-content: start;
     }
-}
 
-@media (width <=sizes.$critical-width) {
-    html {
-        font-size: 7vh;
+    .footer {
+        flex-flow: column;
     }
 }
