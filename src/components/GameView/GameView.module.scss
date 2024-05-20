@@ -21,29 +21,45 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    p {
+    .point {
         background-color: colors.$black;
         box-sizing: content-box;
-        text-align: center;
         display: block;
-        color: colors.$white;
-        font-size: 2rem;
-        font-weight: 600;
         width: 3rem;
         height: 3rem;
         border: 0.2rem solid colors.$white;
         border-radius: 50%;
         padding: 0px;
+        position: relative;
+
+        p {
+            width: fit-content;
+            color: colors.$white;
+            font-size: 2rem;
+            font-weight: 600;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+        }
     }
 
-    p.cooperate {
-        color: colors.$green;
+    .point.cooperate {
         border-color: colors.$green;
+
+        P {
+
+            color: colors.$green;
+        }
     }
 
-    p.cheate {
-        color: colors.$red;
+    .point.cheate {
         border-color: colors.$red;
+
+        P {
+
+            color: colors.$red;
+        }
     }
 }
 

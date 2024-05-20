@@ -1,0 +1,27 @@
+@use '../../styles/colors.scss';
+
+.popup {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 30rem;
+    transform: translate(-50%, 0%);
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    background-color: colors.$black;
+    border: 0.25rem solid colors.$white;
+    border-radius: 2rem;
+    padding: 1rem;
+
+    box-shadow: 0 0.1rem 1rem colors.$black;
+}
+
+*:hover:has(> .popup) {
+    .popup {
+        visibility: visible;
+        opacity: 1;
+    }
+}

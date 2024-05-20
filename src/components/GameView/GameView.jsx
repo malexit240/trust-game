@@ -26,14 +26,14 @@ export function GameView() {
                         m.player == DECISION.COOPERATE && styles['cooperate']
                         || m.player == DECISION.CHEATE && styles['cheate'];
 
-                    return <>
-                        <p className={`${playerClassName}`}> {i + 1} </p>
-                    </>
+                    return <div className={`${styles['point']} ${playerClassName}`}>
+                        <p className={``}> {i + 1} </p>
+                    </div>
                 })}
 
-                {isGameActive && <>
+                {isGameActive && <div className={styles['point']}>
                     <p className={styles['animated']}>?</p>
-                </>}
+                </div>}
 
             </div>
 
@@ -47,14 +47,14 @@ export function GameView() {
                         m.opponent == DECISION.COOPERATE && styles['cooperate']
                         || m.opponent == DECISION.CHEATE && styles['cheate'];
 
-                    return <>
-                        <p className={`${opponentClassName}`}> {i + 1} </p>
-                    </>
+                    return <div className={`${styles['point']} ${opponentClassName}`}>
+                        <p className={``}> {i + 1} </p>
+                    </div>
                 })}
 
-                {isGameActive && <>
+                {isGameActive && <div className={styles['point']}>
                     <p className={styles['animated']}>?</p>
-                </>}
+                </div>}
 
             </div>
 
